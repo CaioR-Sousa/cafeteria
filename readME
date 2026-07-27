@@ -1,0 +1,25 @@
+# Capão Coffee ☕
+
+Landing page responsiva para uma cafeteria fictícia,
+desenvolvida com HTML, CSS e JavaScript.
+
+## Tecnologias
+
+- HTML5
+- CSS3
+- JavaScript
+
+## Funcionalidades
+
+- Menu responsivo
+- Navegação suave
+- Botão voltar ao topo
+- Cards de produtos
+- Seção de depoimentos
+- Layout adaptável para dispositivos móveis
+
+## Próximos passos
+
+- Criar carousel de depoimentos
+- Adicionar animações
+- Melhorar acessibilidade
