@@ -19,9 +19,9 @@ desenvolvida com HTML, CSS e JavaScript.
 - Cards de produtos
 - Seção de depoimentos
 - Layout adaptável para dispositivos móveis
+- carousel de depoimentos
 
 ## Próximos passos
 
-- Criar carousel de depoimentos
 - Adicionar animações
 - Melhorar acessibilidade
