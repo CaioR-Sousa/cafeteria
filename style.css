@@ -315,6 +315,7 @@ header img {
     text-align: center;
     margin: 80px auto;
     gap: 30px;
+    overflow: hidden;
 }
 
 #depoimentos h2 {
@@ -337,19 +338,21 @@ header img {
     line-height: 1.5;
 }
 
+.carrossel {
+    max-width: 1200px;
+    overflow: hidden;
+    width: 100%;
+}
+
 .depoimentos-container {
     display: flex;
-    max-width: 1200px;
     width: 100%;
-    gap: 40px;
-    justify-content: center;
-    align-items: center;
+    transition: transform .5s ease;
 }
 
 .depoimento-card {
-    width: 100%;
     padding: 30px;
-    flex: 1;
+    flex: 0 0 100%;
     background-color: #FBF3E8;
     border-radius: 10px;
     display: flex;
@@ -366,6 +369,29 @@ header img {
         transform .3s ease,
         box-shadow .3s ease;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.indicadores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.indicador {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #D9C2AA;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.indicador.ativo {
+    width: 26px;
+    border-radius: 20px;
+    background: var(--links);
 }
 
 /*Fim da Seção Depoimentos*/
@@ -574,17 +600,28 @@ footer {
         height: 250px;
     }
 
-    .depoimentos-container {
-        flex-direction: column;
+
+    .depoimento {
+        min-width: 100%;
     }
 
-    .depoimento-card {
-        max-width: 100%;
+
+    .indicadores {
+        margin-top: 16px;
+        gap: 8px;
     }
 
-    #contato ul {
-        flex-direction: column;
-        gap: 0px;
+    .indicador {
+        width: 12px;
+        height: 12px;
     }
 
+    .indicador.ativo {
+        width: 30px;
+    }
+}
+
+#contato ul {
+    flex-direction: column;
+    gap: 0px;
 }
