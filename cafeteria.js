@@ -10,56 +10,7 @@ const indicadores = document.querySelectorAll(".indicador")
 
 let slideAtual = 0;
 
-function moverSlide() {
-    depoimentosContainer.style.transform = `translateX(${-(slideAtual * 100)}%)`
-
-    atualizarIndicadores()
-}
-
-function avancarSlide() {
-    slideAtual++
-
-    if (slideAtual >= slides.length) {
-        slideAtual = 0
-    }
-    moverSlide()
-}
-
-function iniciarCarrossel() {
-    intervalo = setInterval(() => {
-        avancarSlide();
-    }, 3000);
-}
-
-depoimentosContainer.addEventListener("mouseenter", () => {
-    clearInterval(intervalo)
-});
-
-depoimentosContainer.addEventListener("mouseleave", () => {
-    iniciarCarrossel()
-});
-
-function atualizarIndicadores() {
-    indicadores.forEach((indicador) => {
-        indicador.classList.remove("ativo")
-    })
-
-    indicadores[slideAtual].classList.add("ativo")
-
-}
-
-
-    indicadores.forEach((indicador, id) => {
-        indicador.addEventListener("click", () => {
-            slideAtual = id
-            moverSlide()
-        })
-    })
-
-    iniciarCarrossel()
-
-
-
+//AnimacoesTela
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -71,9 +22,14 @@ const observer = new IntersectionObserver((entries) => {
     })
 });
 
+//Fim animacoesTela
+
 animarSecao.forEach((secao) => {
     observer.observe(secao)
 })
+
+//Scroll
+
 
 window.addEventListener("scroll", () => {
     secoes.forEach((secao) => {
@@ -92,7 +48,16 @@ window.addEventListener("scroll", () => {
     })
 })
 
-fecharMenu()
+btVoltar.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
+})
+ //Fim Scroll
+
+
+//Responsividade(ToggleButton)
 
 btToggle.addEventListener("click", () => {
     menu.classList.toggle("active")
@@ -103,9 +68,71 @@ function fecharMenu() {
     menuLinks.forEach((link) => {
         link.addEventListener("click", () => {
             menu.classList.remove("active")
+            btToggle.classList.remove("active")
         })
     })
 }
+
+fecharMenu()
+
+//Fim Responsividade(ToggleButton)
+
+
+//Slides
+
+let intervalo
+
+function moverSlide() {
+    depoimentosContainer.style.transform = `translateX(${-(slideAtual * 100)}%)`
+
+    atualizarIndicadores()
+}
+
+function avancarSlide() {
+    slideAtual++
+
+    if (slideAtual >= slides.length) {
+        slideAtual = 0
+    }
+    moverSlide()
+}
+
+function iniciarCarrossel() {
+    clearInterval(intervalo)
+
+    intervalo = setInterval(() => {
+        avancarSlide();
+    }, 3000);
+}
+
+depoimentosContainer.addEventListener("mouseenter", () => {
+    clearInterval(intervalo)
+});
+
+depoimentosContainer.addEventListener("mouseleave", () => {
+    iniciarCarrossel()
+});
+
+function atualizarIndicadores() {
+    indicadores.forEach((indicador) => {
+        indicador.classList.remove("ativo")
+    })
+
+    if (indicadores[slideAtual]) {
+        indicadores[slideAtual].classList.add("ativo")
+    }
+
+}
+
+
+indicadores.forEach((indicador, id) => {
+    indicador.addEventListener("click", () => {
+        slideAtual = id
+        moverSlide()
+    })
+})
+
+iniciarCarrossel()
 
 window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
@@ -114,10 +141,6 @@ window.addEventListener("scroll", () => {
         btVoltar.classList.remove("active")
     }
 })
+//Fim Slides
 
-btVoltar.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    })
-})
+
