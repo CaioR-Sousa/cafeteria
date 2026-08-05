@@ -1,4 +1,3 @@
-# cafeteria
 
 # Capão Coffee ☕
 
